@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "author": "James Chan",
   "email": "jameschan312.cn@gmail.com",
+  "homepage": "https://github.com/typinghare/extrum",
   "scripts": {
     "test": "jest --verbose --coverage",
     "publish": "tsc | npm publish --access public"
