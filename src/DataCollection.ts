@@ -11,17 +11,18 @@ export class DataCollection<
 > {
     /**
      * Creates a data collection.
-     * @param data Data mapping.
+     * @param dataMapping Data mapping.
      */
-    public constructor(protected data: DataMapping<D, M>) {
+    public constructor(protected dataMapping: DataMapping<D, M>) {
     }
 
     /**
-     * Returns data.
+     * Returns data mapping.
      * @type <CM> The custom metadata.
+     * @since 2.1.0
      */
-    public getData<CM extends M = M>(): DataMapping<D, CM> {
-        return this.data as DataMapping<D, CM>
+    public getDataMapping<CM extends M = M>(): DataMapping<D, CM> {
+        return this.dataMapping as DataMapping<D, CM>
     }
 
     /**
@@ -31,7 +32,7 @@ export class DataCollection<
      * @type <CM> The custom metadata.
      */
     public getDatum<K extends keyof D, CM extends M = M>(name: K): Datum<D[K], CM> {
-        return this.data[name] as Datum<D[K], CM>
+        return this.dataMapping[name] as Datum<D[K], CM>
     }
 
     /**
@@ -40,7 +41,7 @@ export class DataCollection<
      * @since 1.1.0
      */
     public getDatumList<CM extends M = M>(): UnknownDatum<CM>[] {
-        return Object.values(this.data)
+        return Object.values(this.dataMapping)
     }
 
     /**
@@ -66,7 +67,42 @@ export class DataCollection<
      * @since 1.1.0
      */
     public exist(name: string): boolean {
-        return this.data.hasOwnProperty(name)
+        return this.dataMapping.hasOwnProperty(name)
+    }
+
+    /**
+     * Iterates over each pair in the data object and invokes the callback.
+     * @param callback A function to be called for each key-value pair.
+     * @since 2.1.0
+     */
+    public forEach(callback: DataCollectionForEachCallback): void {
+        for (const [key, value] of Object.entries(this.dataMapping)) {
+            callback(value, key)
+        }
+    }
+
+    /**
+     * Maps over each pair in the data object and transform the values using the provided callback.
+     * @param callback A function to transform each value.
+     * @return A new object with transformed values, maintaining the original keys.
+     * @since 2.1.0
+     */
+    public map(callback: DataCollectionMapCallback): D {
+        const object: { [key: string]: any } = {}
+        for (const [key, value] of Object.entries(this.dataMapping)) {
+            object[key] = callback(value, key)
+        }
+
+        return object as D
+    }
+
+    /**
+     * Maps over each key-value pair in the data object and transform the datum entries to values.
+     * @return A new object with transformed values, maintaining the original keys.
+     * @since 2.1.0
+     */
+    public getData(): D {
+        return this.map(datum => datum.getValue())
     }
 }
 
@@ -81,3 +117,13 @@ export type Data = Record<string, any>
 export type DataMapping<D extends Data, M extends Metadata = Metadata> = {
     [K in keyof D]: Datum<D[K], M>
 }
+
+/**
+ * @since 2.1.0
+ */
+export type DataCollectionForEachCallback = (datum: Datum, key: string) => void
+
+/**
+ * @since 2.1.0
+ */
+export type DataCollectionMapCallback = (datum: Datum, key: string) => any

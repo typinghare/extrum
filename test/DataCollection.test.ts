@@ -49,6 +49,26 @@ describe('Test class DataCollection.', function() {
         expect(dataCollection.getMetadata('age').public).toBe(false)
     })
 
+    it('Test getDataMapping()', () => {
+        type MyData = {
+            username: string,
+            age: number
+        }
+
+        const dataCollection = new DataCollection<MyData>({
+            username: Datum.of('James Chan').setMetadata({
+                public: true,
+            }),
+            age: Datum.of(24).setMetadata({
+                public: false,
+            }),
+        })
+        const dataMapping = dataCollection.getDataMapping()
+
+        expect(dataMapping.username).not.toBeNull()
+        expect(dataMapping.age.value).toBe(24)
+    })
+
     it('Extend DataCollection.', () => {
         interface MyData {
             username: string,
@@ -77,5 +97,38 @@ describe('Test class DataCollection.', function() {
         expect(myDataCollection.getValue('username')).toBe('James Chan')
         expect(myDataCollection.getValue('age')).toBe(24)
         expect(myDataCollection.getMetadata('age').description).toBe('The age of the user.')
+    })
+
+    it('Test forEach(), map(), and dataMap()', () => {
+        type MyData = {
+            username: string,
+            age: number
+            realAge: number
+        }
+
+        const dataCollection = new DataCollection<MyData>({
+            username: Datum.of('James Chan'),
+            age: Datum.of(24),
+            realAge: Datum.of(25),
+        })
+
+        dataCollection.forEach(((datum, key) => {
+            if (key.slice(-3).toLowerCase() == 'age') {
+                datum.setValue(datum.value + 10)
+            }
+        }))
+
+        expect(dataCollection.getValue('age')).toBe(34)
+        expect(dataCollection.getValue('realAge')).toBe(35)
+
+        const data: MyData = dataCollection.getData()
+        expect(data.username).toBe('James Chan')
+        expect(data.age).toBe(34)
+
+        const distortedData: MyData = dataCollection.map(datum => {
+            return '@#$' + datum.value.toString()
+        })
+        expect(distortedData.username).toBe('@#$James Chan')
+        expect(distortedData.realAge).toBe('@#$35')
     })
 })
