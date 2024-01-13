@@ -1,6 +1,6 @@
 /**
- * @type <T> The type of the value.
- * @type <M> The type of the metadata.
+ * @template T The type of the value.
+ * @template M The type of the metadata.
  */
 export class Datum<T = any, M extends Metadata = Metadata> {
     /**
@@ -107,6 +107,18 @@ export class Datum<T = any, M extends Metadata = Metadata> {
         this.metadata = metadata
 
         return this as unknown as Datum<T, CM>
+    }
+
+    /**
+     * Clones this datum.
+     * @param cloneMetadata Whether to clone (shallow copy) the metadata.
+     * @since 2.2.0
+     */
+    public clone(cloneMetadata: boolean = true): Datum<T, M> {
+        const metadata = this.getMetadata()
+        return Datum.of(this.getDefaultValue())
+            .setMetadata(cloneMetadata ? { ...metadata } : metadata)
+            .setValue(this.value)
     }
 }
 

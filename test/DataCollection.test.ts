@@ -1,7 +1,7 @@
 import { DataCollection, Datum, DatumCreator } from '../src'
 
-describe('Test class DataCollection.', function() {
-    it('Basic tests.', function() {
+describe('Test class DataCollection', function() {
+    it('Basic tests', function() {
         type MyData = {
             username: string,
             age: number,
@@ -30,7 +30,7 @@ describe('Test class DataCollection.', function() {
         expect(dataCollection.getDatumList().length).toBe(3)
     })
 
-    it('Test metadata.', () => {
+    it('Test metadata', () => {
         type MyData = {
             username: string,
             age: number
@@ -69,7 +69,7 @@ describe('Test class DataCollection.', function() {
         expect(dataMapping.age.value).toBe(24)
     })
 
-    it('Extend DataCollection.', () => {
+    it('Extend DataCollection', () => {
         interface MyData {
             username: string,
             age: number

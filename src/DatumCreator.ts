@@ -10,8 +10,12 @@ export class DatumCreator<
     /**
      * Creates a datum creator.
      * @param defaultMetaData The default metadata.
+     * @param cloneMetadata Whether to clone metadata when creating a datum.
      */
-    public constructor(protected defaultMetaData?: M) {
+    public constructor(
+        protected defaultMetaData?: M,
+        protected cloneMetadata: boolean = true,
+    ) {
     }
 
     /**
@@ -21,7 +25,7 @@ export class DatumCreator<
     public create<T>(defaultValue: T): Datum<T, M> {
         const datum = Datum.of<T, M>(defaultValue)
         if (this.defaultMetaData) {
-            datum.setMetadata(this.defaultMetaData)
+            datum.setMetadata(this.cloneMetadata ? { ...this.defaultMetaData } : this.defaultMetaData)
         }
 
         return datum

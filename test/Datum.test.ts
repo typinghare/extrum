@@ -1,7 +1,7 @@
 import { Datum } from '../src'
 
-describe('Test class Datum.', function() {
-    it('Basic tests.', function() {
+describe('Test class Datum', function() {
+    it('Basic tests', function() {
         const numberDatum = Datum.of(5)
 
         // Test default value.
@@ -13,8 +13,8 @@ describe('Test class Datum.', function() {
         expect(numberDatum.value).toBe(10)
     })
 
-    it('Test metadata.', function() {
-        const stringDatum = Datum.of('Hello World!').setMetadata({
+    it('Test metadata', function() {
+        const stringDatum = Datum.of('Hello world!').setMetadata({
             length: 12,
         })
 
@@ -41,10 +41,25 @@ describe('Test class Datum.', function() {
         expect(booleanDatum.getMeta('description')).toBe('是否打开夜间模式')
     })
 
-    it('Test getValue() and setValue().', () => {
+    it('Test getValue() and setValue()', () => {
         const datum = Datum.of(5)
         datum.setValue(10)
 
         expect(datum.getValue()).toBe(10)
+    })
+
+    it('Test clone()', () => {
+        const stringDatum = Datum.of('Hello world!').setMetadata({
+            length: 12,
+        })
+        stringDatum.setValue('Bye!')
+
+        const clonalStringDatum = stringDatum.clone()
+        expect(clonalStringDatum.getDefaultValue()).toBe('Hello world!')
+        expect(clonalStringDatum.getValue()).toBe('Bye!')
+        expect(clonalStringDatum.getMetadata()).toEqual({ length: 12 })
+
+        const clonalStringDatumCopyingMetadata = stringDatum.clone(false)
+        expect(clonalStringDatumCopyingMetadata.getMetadata()).toBe(stringDatum.getMetadata())
     })
 })
