@@ -32,7 +32,7 @@ export class DataCollection<
      * @template K The type of the datum's key.
      * @template CM The custom metadata type to use.
      * @returns The Datum instance associated with the specified name.
-     * @since 2.3.0 Renamed from getDatum to get.
+     * @since 2.4.0 Renamed from getDatum to get.
      */
     public get<K extends keyof D, CM extends M = M>(name: K): Datum<D[K], CM> {
         return this.dataMapping[name] as Datum<D[K], CM>
@@ -43,7 +43,7 @@ export class DataCollection<
      * @template CM The custom metadata type to use.
      * @returns An array of UnknownDatum instances.
      * @since 1.1.0
-     * @since 2.3.0 Renamed from getDatumList to getList.
+     * @since 2.4.0 Renamed from getDatumList to getList.
      */
     public getList<CM extends M = M>(): UnknownDatum<CM>[] {
         return Object.values(this.dataMapping)

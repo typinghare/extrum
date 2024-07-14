@@ -26,7 +26,7 @@ devDependencies:
 
 packages:
 
-  /@ampproject/remapping@2.3.0:
+  /@ampproject/remapping@2.4.0:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
     dependencies:
@@ -51,7 +51,7 @@ packages:
     resolution: {integrity: sha512-6AWcmZC/MZCO0yKys4uhg5NlxL0ESF3K6IAaoQ+xSXvPyPyxNWRafP+GDbI88Oh68O7QkJgmEtedWPM9U0pZNg==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@ampproject/remapping': 2.3.0
+      '@ampproject/remapping': 2.4.0
       '@babel/code-frame': 7.24.7
       '@babel/generator': 7.24.8
       '@babel/helper-compilation-targets': 7.24.8
@@ -2959,7 +2959,7 @@ packages:
       mimic-fn: 2.1.0
     dev: true
 
-  /p-limit@2.3.0:
+  /p-limit@2.4.0:
     resolution: {integrity: sha512-//88mFWSJx8lxCzwdAABTJL2MyWB12+eIY7MDL2SqLmAkeKU9qxRvWuSyTjm3FUmpBEMuFfckAIqEaVGUDxb6w==}
     engines: {node: '>=6'}
     dependencies:
@@ -2977,7 +2977,7 @@ packages:
     resolution: {integrity: sha512-R79ZZ/0wAxKGu3oYMlz8jy/kbhsNrS7SKZ7PxEHBgJ5+F2mtFW2fK2cOtBh1cHYkQsbzFV7I+EoRKe6Yt0oK7A==}
     engines: {node: '>=8'}
     dependencies:
-      p-limit: 2.3.0
+      p-limit: 2.4.0
     dev: true
 
   /p-try@2.2.0:
