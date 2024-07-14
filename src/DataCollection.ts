@@ -1,7 +1,8 @@
 import { Datum, Metadata, UnknownDatum } from './Datum'
 
 /**
- * Data collection.
+ * DataCollection manages a collection of datum, or data. All datum in a data collection should have
+ * the same type of metadata.
  * @type <D> The data to collect.
  * @type <M> The metadata of each datum.
  */
@@ -107,7 +108,7 @@ export class DataCollection<
 }
 
 /**
- * Data type.
+ * Data object type.
  */
 export type Data = Record<string, any>
 

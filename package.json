@@ -1,15 +1,16 @@
 {
   "name": "@typinghare/extrum",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "A lightweight data collector library.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "author": "James Chan",
   "email": "jameschan312.cn@gmail.com",
   "homepage": "https://github.com/typinghare/extrum",
   "scripts": {
     "test": "jest --verbose --coverage",
-    "publish": "tsc | npm publish --access public"
+    "build": "tsc"
   },
   "keywords": [
     "metadata",
@@ -17,11 +18,14 @@
   ],
   "license": "MIT",
   "files": [
-    "src/**/*",
     "dist/**/*"
   ],
   "devDependencies": {
-    "@types/jest": "^29.5.7",
-    "ts-jest": "^29.1.1"
+    "@babel/core": "^7.24.8",
+    "@babel/preset-env": "^7.24.8",
+    "@babel/preset-typescript": "^7.24.7",
+    "@types/jest": "^29.5.12",
+    "babel-jest": "^29.7.0",
+    "ts-jest": "^29.2.2"
   }
 }

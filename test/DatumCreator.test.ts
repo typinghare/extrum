@@ -13,8 +13,8 @@ describe('Test datum creator', () => {
         })
         const datum = datumCreator.create(10)
 
-        expect(datum.getMeta('description')).toBe('Default description.')
-        expect(datum.getMeta('readonly')).toBe(true)
+        expect(datum.meta('description')).toBe('Default description.')
+        expect(datum.meta('readonly')).toBe(true)
     })
 
     it('Test constructor cloneMetadata parameter', () => {

@@ -41,9 +41,9 @@ dataCollection.setValue('fontSize', 20)
 Get and set metadata.
 
 ```ts
-dataCollection.getDatum('username').getMeta('label')
-dataCollection.getDatum('fontSize').getMeta('optionList')
+dataCollection.getDatum('username').meta('label')
+dataCollection.getDatum('fontSize').meta('optionList')
 
-dataCollection.getDatum('username').setMeta('label', '')
-dataCollection.getDatum('fontSize').setMeta('optionList', [8, 12, 16, 20, 24])
+dataCollection.getDatum('username').meta('label', '')
+dataCollection.getDatum('fontSize').meta('optionList', [8, 12, 16, 20, 24])
 ```

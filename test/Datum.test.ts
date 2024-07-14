@@ -19,7 +19,7 @@ describe('Test class Datum', function() {
         })
 
         // Test default metadata.
-        expect(stringDatum.getMeta('length')).toBe(12)
+        expect(stringDatum.meta('length')).toBe(12)
 
         interface MyMetadata {
             label: string,
@@ -32,13 +32,13 @@ describe('Test class Datum', function() {
         })
 
         // Test default metadata.
-        expect(booleanDatum.getMeta('label')).toBe('Dark Mode')
-        expect(booleanDatum.getMeta('description')).toBe('Whether to turn on the dark mode.')
+        expect(booleanDatum.meta('label')).toBe('Dark Mode')
+        expect(booleanDatum.meta('description')).toBe('Whether to turn on the dark mode.')
 
-        booleanDatum.setMeta('label', '夜间模式')
-        booleanDatum.setMeta('description', '是否打开夜间模式')
-        expect(booleanDatum.getMeta('label')).toBe('夜间模式')
-        expect(booleanDatum.getMeta('description')).toBe('是否打开夜间模式')
+        booleanDatum.meta('label', '夜间模式')
+        booleanDatum.meta('description', '是否打开夜间模式')
+        expect(booleanDatum.meta('label')).toBe('夜间模式')
+        expect(booleanDatum.meta('description')).toBe('是否打开夜间模式')
     })
 
     it('Test getValue() and setValue()', () => {
