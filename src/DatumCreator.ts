@@ -1,7 +1,7 @@
 import { Datum, Metadata } from './Datum'
 
 /**
- * Data creator.
+ * A utility class for creating Datum instances with default metadata.
  * @since 2.0.0
  * @example
  *      const datumCreator = new DatumCreator({ state: 'OK' })
@@ -10,9 +10,9 @@ import { Datum, Metadata } from './Datum'
  */
 export class DatumCreator<M extends Metadata = Metadata> {
     /**
-     * Creates a datum creator.
-     * @param defaultMetaData The default metadata.
-     * @param cloneMetadata Whether to clone metadata when creating a datum.
+     * Creates a new DatumCreator instance.
+     * @param defaultMetaData The default metadata to assign to created Datum instances.
+     * @param cloneMetadata Whether to clone the metadata when creating Datum instances.
      */
     public constructor(
         protected defaultMetaData?: M,
@@ -21,8 +21,9 @@ export class DatumCreator<M extends Metadata = Metadata> {
     }
 
     /**
-     * Creates a datum.
-     * @param defaultValue The default value of the datum.
+     * Creates a new Datum instance with a specified default value and optional metadata.
+     * @param defaultValue The default value for the Datum instance.
+     * @returns A new Datum instance initialized with the default value and metadata.
      */
     public create<T>(defaultValue: T): Datum<T, M> {
         const datum = Datum.of<T, M>(defaultValue)

@@ -14,8 +14,8 @@ describe('Test class DataCollection', function() {
             gender: Datum.of('male'),
         })
 
-        expect(dataCollection.getDatum('username')).toBeInstanceOf(Datum)
-        expect(dataCollection.getDatum('age').value).toBe(24)
+        expect(dataCollection.get('username')).toBeInstanceOf(Datum)
+        expect(dataCollection.get('age').value).toBe(24)
         expect(dataCollection.getValue('gender')).toBe('male')
 
         // Get data
@@ -27,7 +27,7 @@ describe('Test class DataCollection', function() {
         expect(dataCollection.exist('password')).toBe(false)
 
         // Get datum list
-        expect(dataCollection.getDatumList().length).toBe(3)
+        expect(dataCollection.getList().length).toBe(3)
     })
 
     it('Test metadata', () => {
