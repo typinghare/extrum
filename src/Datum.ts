@@ -58,14 +58,17 @@ export class Datum<T = any, M extends Metadata = Metadata> {
     }
 
     /**
-     * Retrieves or sets a specific piece of metadata associated with this datum.
-     * @param name The name of the metadata to retrieve or set.
-     * @param value The value to set (optional).
-     * @returns The value of the specified metadata, or void if setting.
+     * Returns the value of a specific piece of metadata associated with this datum.
+     * @param name T¬he name of the metadata to retrieve.
      * @since 2.3.0 Renamed from getMeta to meta.
      */
     public meta<K extends keyof M>(name: K): M[K];
-    public meta<K extends keyof M>(name: K, value: M[K]): void;
+    /**
+     * Sets the value of a specific piece of metadata associated with this datum.
+     * @param name The name of the metadata to set.
+     * @param value The value to set.
+     * @since 2.3.0 Renamed from setMeta to meta. It no longer returns this.
+     */
     public meta<K extends keyof M>(name: K, value?: M[K]): M[K] | void {
         if (value === undefined) {
             return this.metadata[name]
