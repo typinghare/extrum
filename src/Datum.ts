@@ -69,6 +69,7 @@ export class Datum<T = any, M extends Metadata = Metadata> {
      * @param value The value to set.
      * @since 2.4.0 Renamed from setMeta to meta. It no longer returns this.
      */
+    public meta<K extends keyof M>(name: K, value: M[K]): M[K];
     public meta<K extends keyof M>(name: K, value?: M[K]): M[K] | void {
         if (value === undefined) {
             return this.metadata[name]

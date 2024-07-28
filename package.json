@@ -1,6 +1,6 @@
 {
   "name": "@typinghare/extrum",
-  "version": "2.4.0",
+  "version": "2.4.2",
   "description": "A lightweight data collector library.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,7 +10,7 @@
   "homepage": "https://github.com/typinghare/extrum",
   "scripts": {
     "test": "jest --verbose --coverage",
-    "build": "tsc"
+    "build": "rm -rf dist && tsc"
   },
   "keywords": [
     "metadata",

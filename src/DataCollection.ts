@@ -1,4 +1,4 @@
-import { Datum, Metadata, UnknownDatum } from './Datum'
+import { Datum, Metadata, UnknownDatum } from './Datum.js'
 
 /**
  * Manages a collection of datum, ensuring consistency in metadata types.

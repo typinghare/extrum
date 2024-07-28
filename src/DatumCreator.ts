@@ -1,4 +1,4 @@
-import { Datum, Metadata } from './Datum'
+import { Datum, Metadata } from './Datum.js'
 
 /**
  * A utility class for creating Datum instances with default metadata.

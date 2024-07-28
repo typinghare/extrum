@@ -1,4 +1,9 @@
 module.exports = {
-    moduleNameMapper: { '^\.\./src/(.*)$': '<rootDir>/src/$1' },
-    testMatch: ['**/test/**/*.test.(ts|tsx)'],
+    preset: 'ts-jest/presets/default-esm',
+    testEnvironment: 'node',
+    moduleNameMapper: {
+        // Map .js imports to .ts files
+        '^(\\.{1,2}/.*)\\.js$': '$1',
+    },
+    testMatch: ['**/test/**/*.test.ts'],
 }

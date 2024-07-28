@@ -44,6 +44,6 @@ Get and set metadata.
 dataCollection.getDatum('username').meta('label')
 dataCollection.getDatum('fontSize').meta('optionList')
 
-dataCollection.getDatum('username').meta('label', '')
+dataCollection.getDatum('username').meta('label')
 dataCollection.getDatum('fontSize').meta('optionList', [8, 12, 16, 20, 24])
 ```
